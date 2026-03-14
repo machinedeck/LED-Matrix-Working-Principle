@@ -1,7 +1,7 @@
 # LED Matrix Working Principle Explored in Arduino
 <p align = "center"><img src = "Images/main.jpg"></p>
 
-## Background
+## Introduction
 Last time, I created a [Christmas project](https://github.com/machinedeck/Christmas-2025-Project) with blinking lights and a Christmas greeting flashed on an LED matrix screen. The code used for the latter was completed thanks to [ChatGPT](https://chatgpt.com), but I would still like to learn about the working principle of controlling each LED of the matrix independently to produce an image. However, its circuitry limits individual LED control at the same time, and it is possible that turning on one LED also turns on the undesired ones, and vice versa. This yields an incorrectly and differently displayed image.
 
 This problem can be resolved by resorting to the idea of how videos appear continuous and smooth. In fact, they are composed of discrete frames stacked together within a specified period of time. Imagine taking continuous shots within one minute, then organizing them in a slideshow on a computer. If there are relatively few shots per minute, the slideshow may portray objects shifted or displaced in space if they were actually moving when the images were taken. If the shots per minute are increased, these movement shifts appear subtler and slightly shorter. Increase them at the right amount and the slideshow will display the scene of what was happening to the objects.
