@@ -11,3 +11,36 @@ Analogously, we will do the same principle but in a slightly different manner to
 In order to maintain the rest of the matrix off, the undesired column pins are set to 1 since LEDs operate only in the forward-bias. The column of focus is set to zero, and once a certain LED has to be on, the corresponding row pin is set to zero to drive a forward-bias condition. Otherwise, a row pin is just 0.
 
 After some time, we move to the next column and switch its pin to 0 while the rest to 1. Then we do the same process as the previous column. This process is performed until all the columns are covered, and repeated again from the start. If the interval between these column lightings is slow, we can evidently observe the switching of one column to another, but smaller interval makes the switching fast enough that the eyes perceive it as stagnant. This stagnant feature makes the illusion of an image, whose developed principle we will now use to program the LED matrix.
+
+
+```
+   while (millis() - initial_time >= interval) {
+    initial_time = millis();
+
+    // Focus on a specific column. If not chosen, then put to high
+    for (int jprime = 0; jprime < 8; jprime++) {
+      if (jprime != j) {
+        digitalWrite(cols[jprime], HIGH);
+      }
+      else {
+        digitalWrite(cols[jprime], LOW);
+      }
+    }
+
+    // Check the rows. If 1, then turn on
+    for (int i = 0; i < 8; i++) {
+      int value = mat[i][j];
+
+      digitalWrite(rows[i], mat[i][j]);
+    }
+
+    // Increment j to go to another column
+    j++;
+    if (j == 8) {
+      j = 0;
+    }
+  }
+
+
+}
+```
