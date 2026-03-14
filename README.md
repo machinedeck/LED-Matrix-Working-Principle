@@ -51,6 +51,32 @@ if (j == 8) {
 
 ### Overall Code
 ```c
+int mat[8][8] = {{1, 0, 0, 0, 0, 0, 0, 1},
+                 {1, 1, 0, 0, 0, 0, 0, 1},
+                 {1, 0, 1, 0, 0, 0, 0, 1},
+                 {1, 0, 0, 1, 0, 0, 0, 1},
+                 {1, 0, 0, 0, 1, 0, 0, 1},
+                 {1, 0, 0, 0, 0, 1, 0, 1},
+                 {1, 0, 0, 0, 0, 0, 1, 1},
+                 {1, 0, 0, 0, 0, 0, 0, 1}};
+
+int rows[8] = {2, 3, 4, 5, 6, 7, 8, 9};
+int cols[8] = {10, 11, 12, 13, A0, A1, A2, A3};
+int col_ref;
+int val;
+unsigned long initial_time = millis();
+const int interval = 2;
+int j = 0;
+
+void setup() {
+   // put your setup code here, to run once:
+   
+   for (int i = 0; i < 8; i++) {
+      pinMode(rows[i], OUTPUT);
+      pinMode(cols[i], OUTPUT);
+   }
+}
+
 void loop() {
    while (millis() - initial_time >= interval) {
       initial_time = millis();
