@@ -12,35 +12,39 @@ In order to maintain the rest of the matrix off, the undesired column pins are s
 
 After some time, we move to the next column and switch its pin to 0 while the rest to 1. Then we do the same process as the previous column. This process is performed until all the columns are covered, and repeated again from the start. If the interval between these column lightings is slow, we can evidently observe the switching of one column to another, but smaller interval makes the switching fast enough that the eyes perceive it as stagnant. This stagnant feature makes the illusion of an image, whose developed principle we will now use to program the LED matrix.
 
+## Code Breakdown
 
+When I developed the code, I chose to put it in a non-blocking code using `millis()` just in case there would be simultaneous operations (i.e. operations that do not need to wait for others to finish). I put everything inside that `while` non-blocking code below:
+```c
+while (millis() - initial_time >= interval) {
+   initial_time = millis();
+   ...
+}
 ```
-   while (millis() - initial_time >= interval) {
-    initial_time = millis();
+where the ellipsis are the details which I will explain below. What the code above basically does is implicitly focus on a single column within the duration `interval`. When this duration is surpassed, the algorithm moves to the next column and initializes the pin values to display the desired image.
 
-    // Focus on a specific column. If not chosen, then put to high
-    for (int jprime = 0; jprime < 8; jprime++) {
-      if (jprime != j) {
-        digitalWrite(cols[jprime], HIGH);
-      }
-      else {
-        digitalWrite(cols[jprime], LOW);
-      }
-    }
-
-    // Check the rows. If 1, then turn on
-    for (int i = 0; i < 8; i++) {
-      int value = mat[i][j];
-
-      digitalWrite(rows[i], mat[i][j]);
-    }
-
-    // Increment j to go to another column
-    j++;
-    if (j == 8) {
-      j = 0;
-    }
-  }
-
-
+As we mentioned, we focus on a column at a time. For a chosen column $j$, we first set the rest of the column pins to 1 (`HIGH`):
+```c
+for (int jprime = 0; jprime < 8; jprime++) {
+   if (jprime != j) {
+     digitalWrite(cols[jprime], HIGH);
+   }
+   else {
+     digitalWrite(cols[jprime], LOW);
+   }
+}
+```
+Then we set the row pins of column $j$. We read whether the matrix element at column $j$ from the reference image must be ON or OFF, and pass it on to the LED matrix itself:
+```c
+for (int i = 0; i < 8; i++) {
+   int value = mat[i][j];
+   digitalWrite(rows[i], mat[i][j]);
+}
+```
+Once done, we increment $j$, but it has to go back to the first column when all the columns are covered. Hence, we have the overall conditions as follows:
+```c
+j++;
+if (j == 8) {
+   j = 0;
 }
 ```
