@@ -48,3 +48,34 @@ if (j == 8) {
    j = 0;
 }
 ```
+
+### Overall Code
+```c
+void loop() {
+   while (millis() - initial_time >= interval) {
+      initial_time = millis();
+      
+      // Focus on a specific column. If not chosen, then put to high
+      for (int jprime = 0; jprime < 8; jprime++) {
+         if (jprime != j) {
+            digitalWrite(cols[jprime], HIGH);
+         }
+         else {
+            digitalWrite(cols[jprime], LOW);
+         }
+      }
+      
+      // Check the rows. If 1, then turn on
+      for (int i = 0; i < 8; i++) {
+         int value = mat[i][j];
+         digitalWrite(rows[i], mat[i][j]);
+      }
+      
+      // Increment j to go to another column
+      j++;
+      if (j == 8) {
+         j = 0;
+      }
+   }
+}
+```
