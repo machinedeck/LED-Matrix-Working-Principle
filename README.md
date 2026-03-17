@@ -14,7 +14,7 @@ After some time, we move to the next column and switch its pin to 0 while the re
 
 ## Materials
 Refer to the datasheet [here](https://www.alldatasheet.com/datasheet-pdf/view/1147771/TOPLITE/A-1088BS.html).
-<!-- <p align = "center"><img src = "Images/pins.png"></p> -->
+<p align = "center"><img src = "Images/pins.png"></p>
 <p align = "center"><img src = "Images/circuitry.png"></p>
 
 
