@@ -12,6 +12,11 @@ In order to maintain the rest of the matrix off, the undesired column pins are s
 
 After some time, we move to the next column and switch its pin to 0 while the rest to 1. Then we do the same process as the previous column. This process is performed until all the columns are covered, and repeated again from the start. If the interval between these column lightings is slow, we can evidently observe the switching of one column to another, but smaller interval makes the switching fast enough that the eyes perceive it as stagnant. This stagnant feature makes the illusion of an image, whose developed principle we will now use to program the LED matrix.
 
+##
+<p align = "center"><img src = "Images/pins.png"></p>
+<p align = "center"><img src = "Images/circuitry.png"></p>
+
+
 ## Code Breakdown
 
 When I developed the code, I chose to put it in a non-blocking code using `millis()` just in case there would be simultaneous operations (i.e. operations that do not need to wait for others to finish). I put everything inside that `while` non-blocking code below:
