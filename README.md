@@ -12,7 +12,7 @@ In order to maintain the rest of the matrix off, the undesired column pins are s
 
 After some time, we move to the next column and switch its pin to 0 while the rest to 1. Then we do the same process as the previous column. This process is performed until all the columns are covered, and repeated again from the start. If the interval between these column lightings is slow, we can evidently observe the switching of one column to another, but smaller interval makes the switching fast enough that the eyes perceive it as stagnant. This stagnant feature makes the illusion of an image, whose developed principle we will now use to program the LED matrix.
 
-## Materials
+## Methodology
 This simple experiment just requires the following:
 * 1088BS LED matrix, whose datasheet is given [here](https://www.alldatasheet.com/datasheet-pdf/view/1147771/TOPLITE/A-1088BS.html)
 * Arduino UNO microcontroller unit (MCU)
@@ -25,8 +25,11 @@ where additional resistors are added at each column pin to avoid a high voltage 
 <p align = "center"><img src = "Images/pins.png"></p>
 there are eight pins on opposite side, but it does automatically mean one side contains the row pins and the other the column pins. It is important to always check the datasheet to avoid misuse or any problems in the future. Upon close inspection, the corresponding rows (in red) and columns (in blue) are labeled for each pin in the figure above. If there is a label on one side of the matrix, use that as a reference and follow the guide described above.
 
+Connecting the wires to the Arduino MCU is straightforward. Arrange the wires arranged from rows to columns in ascending order each, then connect them to MCU pins 2-13 then analog pins A0-A3 in the same order:
 <p align = "center"><img src = "Images/circuit.png"></p>
 <p align = "center">Circuit diagram with Arduino MCU created in <a href = "https://www.circuit-diagram.org/editor/">https://www.circuit-diagram.org/editor/</a>.</p>
+
+Now the circuit has been all setup, and that's missing is to upload a single code file. The details of this code is the subject of the next section.
 
 ## Code Breakdown
 
