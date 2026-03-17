@@ -25,6 +25,8 @@ where additional resistors are added at each column pin to avoid a high voltage 
 <p align = "center"><img src = "Images/pins.png"></p>
 there are eight pins on opposite side, but it does automatically mean one side contains the row pins and the other the column pins. It is important to always check the datasheet to avoid misuse or any problems in the future. Upon close inspection, the corresponding rows (in red) and columns (in blue) are labeled for each pin in the figure above. If there is a label on one side of the matrix, use that as a reference and follow the guide described above.
 
+<p align = "center"><img src = "Images/circuit.png"></p>
+
 ## Code Breakdown
 
 When I developed the code, I chose to put it in a non-blocking code using `millis()` just in case there would be simultaneous operations (i.e. operations that do not need to wait for others to finish). I put everything inside that `while` non-blocking code below:
