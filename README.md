@@ -13,10 +13,17 @@ In order to maintain the rest of the matrix off, the undesired column pins are s
 After some time, we move to the next column and switch its pin to 0 while the rest to 1. Then we do the same process as the previous column. This process is performed until all the columns are covered, and repeated again from the start. If the interval between these column lightings is slow, we can evidently observe the switching of one column to another, but smaller interval makes the switching fast enough that the eyes perceive it as stagnant. This stagnant feature makes the illusion of an image, whose developed principle we will now use to program the LED matrix.
 
 ## Materials
-Refer to the datasheet [here](https://www.alldatasheet.com/datasheet-pdf/view/1147771/TOPLITE/A-1088BS.html).
-<p align = "center"><img src = "Images/pins.png"></p>
-<p align = "center"><img src = "Images/circuitry.png"></p>
+This simple experiment just requires the following:
+* 1088BS LED matrix, whose datasheet is given [here](https://www.alldatasheet.com/datasheet-pdf/view/1147771/TOPLITE/A-1088BS.html)
+* Arduino UNO microcontroller unit (MCU)
+* Eight 1k&ohm; resistors
+* Connector wires
 
+An LED matrix has a schematic circuitry given as follows:
+<p align = "center"><img src = "Images/circuitry.png"></p>
+where additional resistors are added at each column pin to avoid a high voltage drop across the LEDs, which greatly increases current and eventually destroys it. Unfortunately, the 1088BS LED matrix does not follow this arrangement correspondingly. From its actual diagram below:
+<p align = "center"><img src = "Images/pins.png"></p>
+there are eight pins on opposite side, but it does automatically mean one side contains the row pins and the other the column pins. It is important to always check the datasheet to avoid misuse or any problems in the future. Upon close inspection, the corresponding rows (in red) and columns (in blue) are labeled for each pin in the figure above. If there is a label on one side of the matrix, use that as a reference and follow the guide described above.
 
 ## Code Breakdown
 
