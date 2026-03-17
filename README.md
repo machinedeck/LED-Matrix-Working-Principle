@@ -26,6 +26,7 @@ where additional resistors are added at each column pin to avoid a high voltage 
 there are eight pins on opposite side, but it does automatically mean one side contains the row pins and the other the column pins. It is important to always check the datasheet to avoid misuse or any problems in the future. Upon close inspection, the corresponding rows (in red) and columns (in blue) are labeled for each pin in the figure above. If there is a label on one side of the matrix, use that as a reference and follow the guide described above.
 
 <p align = "center"><img src = "Images/circuit.png"></p>
+<p align = "center">Circuit diagram with Arduino MCU created in <a href = "https://www.circuit-diagram.org/editor/">https://www.circuit-diagram.org/editor/</a>.</p>
 
 ## Code Breakdown
 
