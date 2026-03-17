@@ -12,7 +12,8 @@ In order to maintain the rest of the matrix off, the undesired column pins are s
 
 After some time, we move to the next column and switch its pin to 0 while the rest to 1. Then we do the same process as the previous column. This process is performed until all the columns are covered, and repeated again from the start. If the interval between these column lightings is slow, we can evidently observe the switching of one column to another, but smaller interval makes the switching fast enough that the eyes perceive it as stagnant. This stagnant feature makes the illusion of an image, whose developed principle we will now use to program the LED matrix.
 
-##
+## Materials
+Refer to the datasheet [here](https://www.alldatasheet.com/datasheet-pdf/view/1147771/TOPLITE/A-1088BS.html).
 <p align = "center"><img src = "Images/pins.png"></p>
 <p align = "center"><img src = "Images/circuitry.png"></p>
 
